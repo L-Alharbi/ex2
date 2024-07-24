@@ -1,0 +1,73 @@
+<!--
+Build an HTML page which displays in a table a palette of six different colors for the user to choose from.
+When the user picks a color, the page displays “Hello world!” in the chosen color below the palette. On
+the right side of the page the history of all chosen colors is also displayed as a vertical list, e.g., blue, green,
+magenta,
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise 2</title>
+        <style>
+
+            body{
+                display: flex;
+                justify-content: space-between;
+                padding: 50px;
+            }
+
+            .box{
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+            }
+
+            .cHistory {
+                margin-right: 20px;
+            }
+
+
+        </style>
+        
+
+        <script>
+            function chosenColor(color) {
+                document.getElementById('msg').style.color = color;
+
+                const history = document.getElementById('history');
+                const choice = document.createElement('li'); //creates a new list item 
+
+                choice.textContent = color; // adds the color name to the choice
+                history.appendChild(choice); //adds the choice to the history
+            }
+        </script>
+    </head>
+    <body>
+
+        <div class="colorTable">
+            <table>
+                <tr>
+                    <td class="box"  onclick="chosenColor('red')" style="background-color:red;"></td>
+                    <td class="box" onclick="chosenColor('blue')" style="background-color:blue;"></td>
+                    <td class="box" onclick="chosenColor('green')" style="background-color:green;"></td>
+                </tr>
+                <tr>
+                    <td class="box" onclick="chosenColor('rebeccapurple')" style="background-color: rebeccapurple"></td>
+                    <td class="box" onclick="chosenColor('orange')" style="background-color:orange;"></td>
+                    <td class="box" onclick="chosenColor('brown')" style="background-color:brown;"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="msgArea">
+            <h2 id="msg">Hello world!</h2>
+        </div>
+
+        <div class="cHistory">
+            <h2>History</h2>
+            <ul id="history"></ul>
+        </div>
+
+    </body>
+</html>
